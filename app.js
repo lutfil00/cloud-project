@@ -5,7 +5,8 @@ const Item = require('./models/item');
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/crudapp', { useNewUrlParser: true, useUnifiedTopology: true });
+const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/crudapp';
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
